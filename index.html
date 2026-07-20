@@ -249,6 +249,9 @@
   body.mode-member .trial-only{display:none;}
   body.mode-member .member-only{display:block;}
   body.mode-member .member-only.mo-inline{display:inline;}
+  /* nav links: nav.sheet a sets display:block, so mode rules need matching specificity */
+  nav.sheet a.member-only{display:none;}
+  body.mode-member nav.sheet a.member-only{display:block;}
 
   /* ---------- JOIN / MEMBERSHIP ---------- */
   .plan-group{margin-top:24px;}
@@ -359,17 +362,18 @@
   <button class="nav-close" onclick="closeNav()">✕</button>
   <h4>Jump to</h4>
   <a href="#welcome" onclick="closeNav()"><span class="n">01</span>Welcome</a>
+  <a class="member-only" href="#member-home" onclick="closeNav()"><span class="n">02</span>Your home base</a>
   <a class="trial-only" href="#roadmap" onclick="closeNav()"><span class="n">02</span>Your first 90 days</a>
   <a class="trial-only" href="#quiz" onclick="closeNav()"><span class="n">03</span>Which class should I start with?</a>
-  <a href="#programming" onclick="closeNav()"><span class="n">04</span>Our programming</a>
-  <a href="#schedule" onclick="closeNav()"><span class="n">05</span>Class schedule</a>
-  <a href="#app" onclick="closeNav()"><span class="n">06</span>How to use the app</a>
+  <a class="trial-only" href="#programming" onclick="closeNav()"><span class="n">04</span>Our programming</a>
+  <a class="trial-only" href="#schedule" onclick="closeNav()"><span class="n">05</span>Class schedule</a>
+  <a class="trial-only" href="#app" onclick="closeNav()"><span class="n">06</span>How to use the app</a>
   <a class="trial-only" href="#firstweek" onclick="closeNav()"><span class="n">07</span>Your first week</a>
-  <a href="#logistics" onclick="closeNav()"><span class="n">08</span>The important stuff</a>
-  <a href="#faq" onclick="closeNav()"><span class="n">09</span>FAQ</a>
-  <a href="#location" onclick="closeNav()"><span class="n">10</span>Where to find us</a>
-  <a href="#love" onclick="closeNav()"><span class="n">11</span>Member love</a>
-  <a href="#join" onclick="closeNav()"><span class="n">12</span>Become a member</a>
+  <a class="trial-only" href="#logistics" onclick="closeNav()"><span class="n">08</span>The important stuff</a>
+  <a class="trial-only" href="#faq" onclick="closeNav()"><span class="n">09</span>FAQ</a>
+  <a class="trial-only" href="#location" onclick="closeNav()"><span class="n">10</span>Where to find us</a>
+  <a class="trial-only" href="#love" onclick="closeNav()"><span class="n">11</span>Member love</a>
+  <a class="trial-only" href="#join" onclick="closeNav()"><span class="n">12</span>Become a member</a>
   <a href="#perks" onclick="closeNav()"><span class="n">13</span>Member perks</a>
   <a href="#milestones" onclick="closeNav()"><span class="n">14</span>Milestones &amp; rewards</a>
   <a href="#community" onclick="closeNav()"><span class="n">15</span>Community &amp; events</a>
@@ -403,8 +407,19 @@
   </div>
 </section>
 
+<!-- ================= MEMBER HOME BASE (member mode only) ================= -->
+<section class="section member-only" id="member-home">
+  <div class="wrap fadein">
+    <div class="callout coral" style="margin-top:0;">
+      <h3>Your home base is the AO app 📱</h3>
+      <p style="margin-bottom:16px;">Everything day-to-day lives in your app. Tap <b>SCHEDULE</b> on the bottom menu to book, open <b>Start Here</b> (the menu, top left) for programs, policies, and how-tos, and use <b>CHAT</b> to reach the team. This page is just your extras: perks, referrals, milestones, and community.</p>
+      <a class="btn btn-navy btn-block" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">Open the app schedule →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= WHO WE ARE ================= -->
-<section class="section alt">
+<section class="section alt trial-only" id="whoweare">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Who we are</span>
@@ -522,7 +537,7 @@
 </section>
 
 <!-- ================= PROGRAMMING ================= -->
-<section class="section" id="programming">
+<section class="section trial-only" id="programming">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Our programming</span>
@@ -640,7 +655,7 @@
 </section>
 
 <!-- ================= SCHEDULE ================= -->
-<section class="section" id="schedule">
+<section class="section trial-only" id="schedule">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">When we train</span>
@@ -651,44 +666,48 @@
       <h3>See every class &amp; time 🗓️</h3>
       <p style="margin-bottom:16px;">The live schedule updates in real time, so you'll always see what's open and can join a waitlist if a class is full.</p>
       <a class="btn btn-coral btn-block" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">View the schedule &amp; book →</a>
-      <p style="font-size:.82rem;margin:14px 0 0;color:var(--ink-deep);">You can also find the full class schedule anytime in the <b>START NOW</b> section of your AO app.</p>
+      <p style="font-size:.82rem;margin:14px 0 0;color:var(--ink-deep);">You can also book anytime in the AO app: just tap <b>SCHEDULE</b> on the bottom menu.</p>
     </div>
   </div>
 </section>
 
 <!-- ================= APP ================= -->
-<section class="section alt" id="app">
+<section class="section alt trial-only" id="app">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Your home base</span>
       <h2>How to use the AO app.</h2>
-      <p>Everything (booking, resources, messaging us) lives in the app. Here's the 30-second rundown.</p>
+      <p>Booking, resources, and messaging us all live in the app. Tap below for the quick walkthrough.</p>
     </div>
-    <div class="road" style="margin-top:26px;">
-      <div class="road-item">
-        <span class="road-dot"></span><span class="road-tag">Step 1</span>
-        <h3>Download &amp; log in</h3>
-        <p>Get the Athletic Outcomes app (or open <b>ao.athleticoutcomes.com</b>) and log in with the email you registered with.</p>
+    <details class="acc" style="margin-top:22px;">
+      <summary><span>📱 Show me how (30-second walkthrough)</span><span class="ic">+</span></summary>
+      <div class="body">
+        <div class="road" style="margin-top:12px;">
+          <div class="road-item">
+            <span class="road-dot"></span><span class="road-tag">Step 1</span>
+            <h3>Download &amp; log in</h3>
+            <p>Get the Athletic Outcomes app (or open <b>ao.athleticoutcomes.com</b>) and log in with your registered email. First time? Tap <b>Sign Up</b>, sign the quick waiver, and you're in.</p>
+          </div>
+          <div class="road-item alt">
+            <span class="road-dot"></span><span class="road-tag">Step 2</span>
+            <h3>Book a class: tap “SCHEDULE”</h3>
+            <p>To book, tap <b>SCHEDULE</b> on the bottom menu, pick your class or SGPT session, and register. If a class is full, you can hop on the waitlist.</p>
+          </div>
+          <div class="road-item">
+            <span class="road-dot"></span><span class="road-tag">Step 3</span>
+            <h3>Open “Start Here”</h3>
+            <p>Tap the menu (three lines, top left) and open <b>Start Here</b>, your resource hub: onboarding, class themes, refer a friend, perks, Google review, and policies.</p>
+          </div>
+          <div class="road-item alt">
+            <span class="road-dot"></span><span class="road-tag">Step 4</span>
+            <h3>Chat &amp; Community</h3>
+            <p>Message the AO team anytime in <b>CHAT</b>, and follow events, promos, and member stories under <b>Community</b>. Turn on notifications so you never miss a thing.</p>
+          </div>
+        </div>
+        <a class="btn btn-coral btn-block" style="margin-top:8px;" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">View the schedule &amp; book →</a>
       </div>
-      <div class="road-item alt">
-        <span class="road-dot"></span><span class="road-tag">Step 2</span>
-        <h3>Tap “SCHEDULE” to book</h3>
-        <p>Browse the calendar and book your Classes &amp; SGPT sessions. You can join a waitlist if a class is full, too.</p>
-      </div>
-      <div class="road-item">
-        <span class="road-dot"></span><span class="road-tag">Step 3</span>
-        <h3>Tap “START NOW”</h3>
-        <p>Find quick resources explaining our current class programs, the different class types, and what SGPT is all about, plus the class schedule to book from.</p>
-      </div>
-      <div class="road-item alt">
-        <span class="road-dot"></span><span class="road-tag">Step 4</span>
-        <h3>Manage &amp; message</h3>
-        <p>Cancel or reschedule, check your upcoming sessions, and message us anytime in the app's <b>CHAT</b> section.</p>
-      </div>
-    </div>
-    <a class="btn btn-coral btn-block" style="margin-top:24px;" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">View the schedule &amp; book →</a>
-    <p style="text-align:center;font-size:.82rem;color:var(--ink-deep);margin-top:12px;">You can also find the full class schedule anytime in the <b>START NOW</b> section of your AO app.</p>
-    <p style="text-align:center;font-size:.82rem;color:var(--ink-deep);margin-top:6px;">Tip: on your phone, add this guidebook to your home screen so it's always a tap away.</p>
+    </details>
+    <p style="text-align:center;font-size:.82rem;color:var(--ink-deep);margin-top:14px;">Tip: on your phone, add this guidebook to your home screen so it's always a tap away.</p>
   </div>
 </section>
 
@@ -714,7 +733,7 @@
 </section>
 
 <!-- ================= LOGISTICS ================= -->
-<section class="section" id="logistics">
+<section class="section trial-only" id="logistics">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Good to know</span>
@@ -733,7 +752,7 @@
 </section>
 
 <!-- ================= FAQ ================= -->
-<section class="section alt" id="faq">
+<section class="section alt trial-only" id="faq">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Quick answers</span>
@@ -753,7 +772,7 @@
 </section>
 
 <!-- ================= LOCATION ================= -->
-<section class="section" id="location">
+<section class="section trial-only" id="location">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Find us</span>
@@ -773,7 +792,7 @@
 </section>
 
 <!-- ================= TESTIMONIALS ================= -->
-<section class="section alt" id="love">
+<section class="section alt trial-only" id="love">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Don't just take our word</span>
@@ -1148,6 +1167,21 @@
       document.getElementById('chipTrial').classList.add('active');
       document.getElementById('chipMember').classList.remove('active');
     }
+    renumberNav();
+  }
+
+  /* Renumber the jump menu so the visible items always read 01, 02, 03... in order,
+     no gaps, whichever mode we're in. */
+  function renumberNav(){
+    var links = document.querySelectorAll('#sheet a');
+    var i = 0;
+    links.forEach(function(a){
+      var n = a.querySelector('.n');
+      if(!n) return;
+      if(getComputedStyle(a).display === 'none') return;
+      i++;
+      n.textContent = (i < 10 ? '0' : '') + i;
+    });
   }
 
   /* ---------- NAME PERSONALIZATION (from the link) ---------- */
@@ -1239,6 +1273,7 @@
       var st = (q.get('stage') || q.get('mode') || '').toLowerCase();
       if(st==='member' || st==='members' || st==='m'){ setMode('member'); }
     }catch(e){}
+    try{ renumberNav(); }catch(e){}
   })();
 </script>
 <!-- Privacy-friendly page counter (GoatCounter, free, no cookies).
