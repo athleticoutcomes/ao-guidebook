@@ -359,21 +359,22 @@
   <button class="nav-close" onclick="closeNav()">✕</button>
   <h4>Jump to</h4>
   <a href="#welcome" onclick="closeNav()"><span class="n">01</span>Welcome</a>
-  <a href="#roadmap" onclick="closeNav()"><span class="n">02</span>Your first 90 days</a>
+  <a class="trial-only" href="#roadmap" onclick="closeNav()"><span class="n">02</span>Your first 90 days</a>
   <a href="#quiz" onclick="closeNav()"><span class="n">03</span>Which class should I start with?</a>
   <a href="#programming" onclick="closeNav()"><span class="n">04</span>Our programming</a>
-  <a href="#app" onclick="closeNav()"><span class="n">05</span>How to use the app</a>
-  <a href="#firstweek" onclick="closeNav()"><span class="n">06</span>Your first week</a>
-  <a href="#logistics" onclick="closeNav()"><span class="n">07</span>The important stuff</a>
-  <a href="#faq" onclick="closeNav()"><span class="n">08</span>FAQ</a>
-  <a href="#location" onclick="closeNav()"><span class="n">09</span>Where to find us</a>
-  <a href="#love" onclick="closeNav()"><span class="n">10</span>Member love</a>
-  <a href="#join" onclick="closeNav()"><span class="n">11</span>Become a member</a>
-  <a href="#perks" onclick="closeNav()"><span class="n">12</span>Member perks</a>
-  <a href="#milestones" onclick="closeNav()"><span class="n">13</span>Milestones &amp; rewards</a>
-  <a href="#community" onclick="closeNav()"><span class="n">14</span>Community &amp; events</a>
-  <a href="#refer" onclick="closeNav()"><span class="n">15</span>Refer, review &amp; feedback</a>
-  <a href="#contact" onclick="closeNav()"><span class="n">16</span>Contact us</a>
+  <a href="#schedule" onclick="closeNav()"><span class="n">05</span>Class schedule</a>
+  <a href="#app" onclick="closeNav()"><span class="n">06</span>How to use the app</a>
+  <a class="trial-only" href="#firstweek" onclick="closeNav()"><span class="n">07</span>Your first week</a>
+  <a href="#logistics" onclick="closeNav()"><span class="n">08</span>The important stuff</a>
+  <a href="#faq" onclick="closeNav()"><span class="n">09</span>FAQ</a>
+  <a href="#location" onclick="closeNav()"><span class="n">10</span>Where to find us</a>
+  <a href="#love" onclick="closeNav()"><span class="n">11</span>Member love</a>
+  <a href="#join" onclick="closeNav()"><span class="n">12</span>Become a member</a>
+  <a href="#perks" onclick="closeNav()"><span class="n">13</span>Member perks</a>
+  <a href="#milestones" onclick="closeNav()"><span class="n">14</span>Milestones &amp; rewards</a>
+  <a href="#community" onclick="closeNav()"><span class="n">15</span>Community &amp; events</a>
+  <a href="#refer" onclick="closeNav()"><span class="n">16</span>Refer, review &amp; feedback</a>
+  <a href="#contact" onclick="closeNav()"><span class="n">17</span>Contact us</a>
 </nav>
 
 <span id="top"></span>
@@ -420,7 +421,7 @@
 </section>
 
 <!-- ================= ROADMAP ================= -->
-<section class="section" id="roadmap">
+<section class="section trial-only" id="roadmap">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">The journey</span>
@@ -638,6 +639,23 @@
   </div>
 </section>
 
+<!-- ================= SCHEDULE ================= -->
+<section class="section" id="schedule">
+  <div class="wrap fadein">
+    <div class="sec-head">
+      <span class="eyebrow">When we train</span>
+      <h2>The class schedule.</h2>
+      <p>Browse every class and time, then book the sessions that fit your week. New here? Grab a couple this week to lock in the habit.</p>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <h3>See every class &amp; time 🗓️</h3>
+      <p style="margin-bottom:16px;">The live schedule updates in real time, so you'll always see what's open and can join a waitlist if a class is full.</p>
+      <a class="btn btn-coral btn-block" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">View the schedule &amp; book →</a>
+      <p style="font-size:.82rem;margin:14px 0 0;color:var(--ink-deep);">You can also find the full class schedule anytime in the <b>START NOW</b> section of your AO app.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ================= APP ================= -->
 <section class="section alt" id="app">
   <div class="wrap fadein">
@@ -659,8 +677,8 @@
       </div>
       <div class="road-item">
         <span class="road-dot"></span><span class="road-tag">Step 3</span>
-        <h3>Tap “START HERE”</h3>
-        <p>Find quick resources explaining our current class programs, the different class types, and what SGPT is all about.</p>
+        <h3>Tap “START NOW”</h3>
+        <p>Find quick resources explaining our current class programs, the different class types, and what SGPT is all about, plus the class schedule to book from.</p>
       </div>
       <div class="road-item alt">
         <span class="road-dot"></span><span class="road-tag">Step 4</span>
@@ -668,13 +686,14 @@
         <p>Cancel or reschedule, check your upcoming sessions, and message us anytime in the app's <b>CHAT</b> section.</p>
       </div>
     </div>
-    <a class="btn btn-coral btn-block" style="margin-top:24px;" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">Book a session now →</a>
-    <p style="text-align:center;font-size:.82rem;color:var(--ink-deep);margin-top:12px;">Tip: on your phone, add this guidebook to your home screen so it's always a tap away.</p>
+    <a class="btn btn-coral btn-block" style="margin-top:24px;" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">View the schedule &amp; book →</a>
+    <p style="text-align:center;font-size:.82rem;color:var(--ink-deep);margin-top:12px;">You can also find the full class schedule anytime in the <b>START NOW</b> section of your AO app.</p>
+    <p style="text-align:center;font-size:.82rem;color:var(--ink-deep);margin-top:6px;">Tip: on your phone, add this guidebook to your home screen so it's always a tap away.</p>
   </div>
 </section>
 
 <!-- ================= FIRST WEEK CHECKLIST ================= -->
-<section class="section" id="firstweek">
+<section class="section trial-only" id="firstweek">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Let's build momentum</span>
