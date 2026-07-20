@@ -229,6 +229,21 @@
   .form-thanks{padding:8px 2px;}
   .ao-form .check-inline{flex-direction:row;align-items:flex-start;gap:10px;font-weight:600;font-size:.88rem;}
   .ao-form .check-inline input{flex:0 0 auto;width:20px;height:20px;margin-top:2px;}
+  /* Your AO Plan assessment */
+  .apbar{height:6px;border-radius:99px;background:var(--cream-2);overflow:hidden;margin:4px 0 22px;}
+  .apbar span{display:block;height:100%;width:0;background:var(--coral);transition:width .35s ease;}
+  .apstep{animation:apfade .3s ease;}
+  @keyframes apfade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .apq-count{font-family:'Zona Pro','Poppins',sans-serif;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky-deep);font-weight:800;}
+  .apq-title{font-size:1.2rem;font-weight:800;color:var(--ink);margin:4px 0 16px;letter-spacing:-.3px;}
+  .apopts{display:flex;flex-direction:column;gap:10px;}
+  .apopt{text-align:left;border:2px solid rgba(14,55,69,.12);background:var(--paper);border-radius:14px;padding:15px 17px;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s;box-shadow:var(--shadow-sm);}
+  .apopt:hover{border-color:var(--sky-deep);transform:translateY(-1px);}
+  .apback{background:none;border:none;color:var(--sky-deep);font-family:inherit;font-weight:600;cursor:pointer;margin-top:16px;padding:6px 0;font-size:.92rem;}
+  .ap-rec{background:var(--paper);border-radius:20px;padding:24px 22px;box-shadow:var(--shadow-sm);border-top:6px solid var(--coral);animation:apfade .4s ease;}
+  .ap-rec .recname{font-size:1.7rem;font-weight:900;color:var(--ink);letter-spacing:-.6px;margin:6px 0 10px;line-height:1.1;}
+  .ap-rec .why{color:var(--ink-deep);font-size:1rem;line-height:1.6;}
+  .ap-rec .why b{color:var(--ink);}
   .callout h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;}
 
   /* ---------- LOGISTIC LIST ---------- */
@@ -389,7 +404,8 @@
   <a class="trial-only" href="#faq" onclick="closeNav()"><span class="n">08</span>The important stuff</a>
   <a class="trial-only" href="#location" onclick="closeNav()"><span class="n">10</span>Where to find us</a>
   <a class="trial-only" href="#love" onclick="closeNav()"><span class="n">11</span>Member love</a>
-  <a class="trial-only" href="#join" onclick="closeNav()"><span class="n">12</span>Become a member</a>
+  <a class="trial-only" href="#aoplan" onclick="closeNav()"><span class="n">12</span>Your AO Plan</a>
+  <a class="trial-only" href="#join" onclick="closeNav()"><span class="n">13</span>Become a member</a>
   <a href="#perks" onclick="closeNav()"><span class="n">13</span>Member perks</a>
   <a href="#milestones" onclick="closeNav()"><span class="n">14</span>Milestones &amp; rewards</a>
   <a href="#community" onclick="closeNav()"><span class="n">15</span>Community &amp; events</a>
@@ -862,6 +878,21 @@
 </section>
 
 <!-- ================= JOIN / BECOME A MEMBER ================= -->
+<!-- ================= YOUR AO PLAN (assessment → one recommendation) ================= -->
+<section class="section trial-only" id="aoplan">
+  <div class="wrap fadein">
+    <div class="sec-head">
+      <span class="eyebrow">Almost there</span>
+      <h2>Your AO Plan.</h2>
+      <p>A few questions, the kind a coach would ask, and we'll point you to the one next step that fits you best. Takes about a minute.</p>
+    </div>
+    <div class="apbar" id="apBar"><span id="apFill"></span></div>
+    <div id="apQuiz" aria-live="polite"></div>
+    <div id="apResult" style="display:none;"></div>
+  </div>
+</section>
+
+<!-- ================= BECOME A MEMBER (compare all / fallback) ================= -->
 <section class="section" id="join">
   <div class="wrap fadein">
 
@@ -875,11 +906,9 @@
 
       <!-- OFFER BANNER (easy to swap) -->
       <div class="callout coral" id="offerBanner" style="margin-top:24px;">
-        <h3>🎉 New member offer</h3>
-        <p style="margin-bottom:14px;"><b>15% off your first three 4-week autopays</b> on any membership. Use this code at checkout:</p>
-        <div style="display:inline-block;background:#fff;color:var(--coral);font-family:'Zona Pro','Poppins',sans-serif;letter-spacing:1.5px;padding:9px 18px;border-radius:12px;font-size:1.05rem;margin-bottom:16px;">NEWMEMBER</div>
-        <br>
-        <a class="btn btn-navy" href="#join-plans">Choose your membership ↓</a>
+        <h3>Keep your momentum.</h3>
+        <p style="margin-bottom:16px;">Because you finished your trial strong, your <b>first 4 weeks of Unlimited Classes are $99</b> (then $198 / 4 weeks). No contract, cancel anytime.</p>
+        <a class="btn btn-navy" href="#aoplan" onclick="var el=document.getElementById('aoplan'); if(el) el.scrollIntoView({behavior:'smooth'}); return false;">Find your plan first ↑</a>
       </div>
 
       <!-- CLASS MEMBERSHIPS -->
@@ -1421,6 +1450,95 @@
   document.querySelectorAll('.fadein').forEach(function(el){io.observe(el);});
 
   /* ---------- PERSONALIZE FROM LINK ---------- */
+  /* ---------- YOUR AO PLAN (membership recommendation) ---------- */
+  (function(){
+    var Q = [
+      {q:"What brought you to AO?", o:[
+        {t:"Get stronger", c:1, s:0},
+        {t:"Lose weight & feel better", c:1, s:0},
+        {t:"Build a consistent routine", c:1, s:1},
+        {t:"Find a community", c:2, s:0},
+        {t:"Train around an injury or pain", c:0, s:2}
+      ]},
+      {q:"What would success look like in 6 months?", o:[
+        {t:"I train regularly without forcing it", c:1, s:1},
+        {t:"I'm noticeably stronger and fitter", c:1, s:0},
+        {t:"I feel confident and know what I'm doing", c:0, s:1},
+        {t:"AO is part of my life and my people", c:2, s:0}
+      ]},
+      {q:"What's made staying consistent hard before?", o:[
+        {t:"Staying motivated on my own", c:1, s:1},
+        {t:"Not knowing what to do", c:0, s:2},
+        {t:"No accountability", c:0, s:2},
+        {t:"Life and time", c:1, s:0},
+        {t:"Feeling unsure in the gym", c:0, s:2}
+      ]},
+      {q:"Which have you enjoyed most so far?", o:[
+        {t:"The group classes", c:2, s:0},
+        {t:"Small-group coaching (SGPT)", c:0, s:2},
+        {t:"A mix of both", c:1, s:1},
+        {t:"Still figuring it out", c:1, s:0}
+      ]},
+      {q:"How confident do you feel training on your own?", o:[
+        {t:"Very confident", c:2, s:0},
+        {t:"Somewhat", c:1, s:0},
+        {t:"Not yet", c:0, s:2}
+      ]},
+      {q:"How many days a week feels realistic?", o:[
+        {t:"2 days", c:0, s:1},
+        {t:"3 days", c:1, s:0},
+        {t:"4 or more", c:2, s:0}
+      ]}
+    ];
+    var answers = [], i = 0;
+    var UNL='https://ao.athleticoutcomes.com/packages/55366/purchase/';
+    var SG='https://ao.athleticoutcomes.com/packages/55359/purchase/';
+    function render(){
+      var quiz=document.getElementById('apQuiz'), fill=document.getElementById('apFill');
+      if(!quiz) return;
+      if(fill) fill.style.width=((i)/Q.length*100)+'%';
+      var st=Q[i], html='<div class="apstep"><div class="apq-count">Question '+(i+1)+' of '+Q.length+'</div><div class="apq-title">'+st.q+'</div><div class="apopts">';
+      st.o.forEach(function(o,idx){ html+='<button class="apopt" onclick="apPick('+idx+')">'+o.t+'</button>'; });
+      html+='</div>';
+      if(i>0) html+='<button class="apback" onclick="apBack()">← back</button>';
+      html+='</div>';
+      quiz.innerHTML=html;
+    }
+    window.apPick=function(idx){ answers[i]=Q[i].o[idx]; if(i<Q.length-1){ i++; render(); } else showResult(); };
+    window.apBack=function(){ if(i>0){ i--; render(); } };
+    window.apRestart=function(){ answers=[]; i=0; var r=document.getElementById('apResult'); r.style.display='none'; document.getElementById('apQuiz').style.display=''; render(); document.getElementById('aoplan').scrollIntoView({behavior:'smooth',block:'start'}); };
+    function classesOffer(name, link){
+      return '<div class="callout coral" style="margin-top:18px;"><h3>Keep your momentum.</h3><p style="margin-bottom:16px;">You\'ve already done the hardest part. Your <b>first 4 weeks of Unlimited Classes are $99</b> (then $198 / 4 weeks). No contract, cancel anytime.</p><a class="btn btn-navy btn-block" href="'+link+'" target="_blank" rel="noopener">Start '+name+' →</a></div>';
+    }
+    function showResult(){
+      var fill=document.getElementById('apFill'); if(fill) fill.style.width='100%';
+      var s=0; answers.forEach(function(a){ s+=a.s; });
+      var out = s>=7 ? 'sgpt' : (s>=4 ? 'both' : 'classes');
+      var challenge=(answers[2]||{}).t||'';
+      var recName, why, offerHtml;
+      if(out==='classes'){
+        recName='Unlimited Classes';
+        why='You\'re here for the training <b>and</b> the people, and you\'ve enjoyed the classes. <b>Unlimited Classes</b> gives you the variety, energy, and community that make it easy to keep showing up, as often as you like.';
+        offerHtml=classesOffer(recName, UNL);
+      } else if(out==='both'){
+        recName='Unlimited Classes + SGPT';
+        why='You told us the hard part has been <b>'+challenge.toLowerCase()+'</b>. That\'s exactly what SGPT is built for: a coach who knows your name, your numbers, and your plan. Pair it with <b>Unlimited Classes</b> and you get real accountability plus the community and variety you love.';
+        offerHtml=classesOffer('Unlimited Classes', UNL)+'<p style="text-align:center;margin:14px 0 0;font-size:.92rem;color:var(--ink-deep);">Then add SGPT for coaching and accountability: <a href="#pt-form" onclick="return openReq(\'pt-form\')" style="color:var(--ink-deep);font-weight:800;text-decoration:underline;">ask us to get you started →</a></p>';
+      } else {
+        recName='SGPT · Small-Group Personal Training';
+        why='You want a coach in your corner and a clear plan, and staying consistent has come down to <b>'+challenge.toLowerCase()+'</b>. <b>SGPT</b> is the most personal way to train at AO: capped at 6, with your program and progress tracked every session. It\'s the fastest way to build real confidence.';
+        offerHtml='<div class="callout coral" style="margin-top:18px;"><h3>Keep your momentum.</h3><p style="margin-bottom:16px;">You\'ve already done the hardest part. SGPT is <b>$400 / 4 weeks</b> unlimited (or an 8-session pack). No contract, cancel anytime.</p><a class="btn btn-navy btn-block" href="'+SG+'" target="_blank" rel="noopener">Start SGPT →</a></div>';
+      }
+      var html='<div class="ap-rec"><span class="eyebrow">Your recommended path</span><div class="recname">'+recName+'</div><div class="why">'+why+'</div>'+offerHtml;
+      html+='<p style="text-align:center;margin:16px 0 0;font-size:.9rem;"><a href="#join-plans" onclick="var el=document.getElementById(\'join-plans\'); if(el) el.scrollIntoView({behavior:\'smooth\'}); return false;" style="color:var(--ink-deep);font-weight:600;">Prefer to see everything? Compare all options →</a></p>';
+      html+='<button class="apback" onclick="apRestart()">↺ Start over</button></div>';
+      var r=document.getElementById('apResult'); r.innerHTML=html; r.style.display='block';
+      document.getElementById('apQuiz').style.display='none';
+      r.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    try{ render(); }catch(e){}
+  })();
+
   /* Usage: guidebook.html?name=Sarah&stage=member  (stage optional: trial | member) */
   (function initFromURL(){
     try{
