@@ -208,6 +208,8 @@
 
   /* ---------- CALLOUT ---------- */
   .callout{background:var(--sky);border-radius:var(--radius);padding:24px;color:var(--ink-deep);margin-top:24px;}
+  /* text links inside slate callouts: keep them readable (dark + underlined), not low-contrast red */
+  .callout:not(.coral) a:not(.btn){color:var(--ink-deep);text-decoration:underline;font-weight:800;}
   .callout.coral{background:var(--coral);color:#fff;}
   .callout.coral h3,.callout.coral a{color:#fff;}
   .callout h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;}
@@ -632,7 +634,7 @@
           <a class="btn btn-navy btn-block" href="#" onclick="return openProgram('strength')">AO Strength this week →</a>
           <a class="btn btn-navy btn-block" href="#" onclick="return openProgram('power')">AO Power this week →</a>
         </div>
-        <p style="font-size:.82rem;margin:14px 0 0;color:var(--ink-deep);">Want to track your weights and PRs? AO Strength &amp; AO Power programming is also built into your AO app. Prefer the full month? Open it in Notion: <a href="https://cotton-satin-a87.notion.site/24724e77f1c98048a7b4e9c0bc7e9647" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700;">Fit</a> · <a href="https://cotton-satin-a87.notion.site/24724e77f1c980e5a279d34b024feece" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700;">Strength</a> · <a href="https://cotton-satin-a87.notion.site/24724e77f1c980ecb15dcad8017eac4b" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700;">Power</a></p>
+        <p style="font-size:.82rem;margin:14px 0 0;color:var(--ink-deep);">Want to track your weights and PRs? AO Strength &amp; AO Power programming is also built into your AO app. Prefer the full month? Open it in Notion: <a href="https://cotton-satin-a87.notion.site/24724e77f1c98048a7b4e9c0bc7e9647" target="_blank" rel="noopener">Fit</a> · <a href="https://cotton-satin-a87.notion.site/24724e77f1c980e5a279d34b024feece" target="_blank" rel="noopener">Strength</a> · <a href="https://cotton-satin-a87.notion.site/24724e77f1c980ecb15dcad8017eac4b" target="_blank" rel="noopener">Power</a></p>
       </div>
 
       <a class="btn btn-coral btn-block" style="margin-top:18px;" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">Book this week's sessions →</a>
@@ -858,12 +860,12 @@
       <!-- OTHER OPTIONS -->
       <div class="plan-group">
         <h3 class="pg-title">✨ More ways to train</h3>
-        <a class="plan" href="https://ao.athleticoutcomes.com/packages/55336/purchase/" target="_blank" rel="noopener">
-          <div class="pinfo"><h4>Personal Training</h4><p>Fully 1:1. Packs of 5 ($575) or 10 ($1,100, best value).</p></div>
+        <a class="plan" href="https://cotton-satin-a87.notion.site/1b024e77f1c980b2ad91d38167ea9ef5?pvs=105" target="_blank" rel="noopener">
+          <div class="pinfo"><h4>Personal Training</h4><p>Fully 1:1. Packs of 5 ($575) or 10 ($1,100, best value). Tap to get started.</p></div>
           <div class="price"><span class="amt">$120</span><span class="per">single session</span></div>
         </a>
-        <a class="plan" href="https://ao.athleticoutcomes.com/packages/55341/purchase/" target="_blank" rel="noopener">
-          <div class="pinfo"><h4>Physical Therapy · Dr. Mari</h4><p>Manual therapy, dry needling &amp; movement care.</p></div>
+        <a class="plan" href="https://cotton-satin-a87.notion.site/1b524e77f1c9809fbdc9f7bfa05c63b1?pvs=105" target="_blank" rel="noopener">
+          <div class="pinfo"><h4>Physical Therapy · Dr. Mari</h4><p>Manual therapy, dry needling &amp; movement care. Tap to get scheduled.</p></div>
           <div class="price"><span class="amt">$98</span><span class="per">/ session</span></div>
         </a>
         <a class="plan" href="https://ao.athleticoutcomes.com/packages/55333/purchase/" target="_blank" rel="noopener">
@@ -1214,7 +1216,7 @@
     strength:"https://ao.athleticoutcomes.com/a/booking/",
     power:"https://ao.athleticoutcomes.com/a/booking/",
     sgpt:"https://ao.athleticoutcomes.com/a/booking/",
-    pt:"https://ao.athleticoutcomes.com/a/booking/"
+    pt:"https://cotton-satin-a87.notion.site/1b524e77f1c9809fbdc9f7bfa05c63b1?pvs=105"
   };
 
   function pick(el,next){
