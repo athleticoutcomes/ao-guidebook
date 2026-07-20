@@ -212,6 +212,14 @@
   .callout:not(.coral) a:not(.btn){color:var(--ink-deep);text-decoration:underline;font-weight:800;}
   .callout.coral{background:var(--coral);color:#fff;}
   .callout.coral h3,.callout.coral a{color:#fff;}
+  /* Your next step (90-day spine) */
+  .step-chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px;}
+  .step-chip{border:2px solid rgba(14,55,69,.16);background:var(--paper);color:var(--ink);font-family:inherit;font-weight:700;font-size:.84rem;padding:8px 14px;border-radius:999px;cursor:pointer;transition:.15s;}
+  .step-chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .step-panel{display:none;}
+  .step-panel.show{display:block;}
+  .step-tag{display:inline-block;font-family:'Zona Pro','Poppins',sans-serif;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;font-weight:800;opacity:.85;margin-bottom:6px;}
+  .step-mini{font-size:.82rem;margin:12px 0 0;opacity:.92;}
   .callout h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;}
 
   /* ---------- LOGISTIC LIST ---------- */
@@ -402,6 +410,63 @@
       <div class="mode-chips">
         <button class="mode-chip active" id="chipTrial" onclick="setMode('trial')">👋 On my trial</button>
         <button class="mode-chip" id="chipMember" onclick="setMode('member')">💪 I'm a member</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= YOUR NEXT STEP (trial 90-day spine) ================= -->
+<section class="section trial-only" id="nextstep">
+  <div class="wrap fadein">
+    <div class="sec-head">
+      <span class="eyebrow">Your next step</span>
+      <h2>Not sure what to do next? Start here.</h2>
+      <p>Wherever you are in your two weeks, here's the one thing to focus on. Tap where you're at:</p>
+    </div>
+    <div class="step-chips" role="group" aria-label="Where are you in your trial?">
+      <button class="step-chip active" data-step="1" onclick="setStep(1)">Just joined</button>
+      <button class="step-chip" data-step="2" onclick="setStep(2)">First week</button>
+      <button class="step-chip" data-step="3" onclick="setStep(3)">Settling in</button>
+      <button class="step-chip" data-step="4" onclick="setStep(4)">Ready to commit</button>
+    </div>
+
+    <div class="step-panel show" data-step="1">
+      <div class="callout coral" style="margin-top:14px;">
+        <span class="step-tag">Your first 48 hours</span>
+        <h3>Book your very first class.</h3>
+        <p style="margin-bottom:16px;">Not sure which one? Take the 60-second quiz and we'll pick your perfect starting class, then grab your spot.</p>
+        <a class="btn btn-navy btn-block" href="#quiz">Take the quiz &amp; book →</a>
+        <p class="step-mini">Also worth doing now: download the AO app, and skim "what to expect" so day one feels easy.</p>
+      </div>
+    </div>
+
+    <div class="step-panel" data-step="2">
+      <div class="callout" style="margin-top:14px;">
+        <span class="step-tag">Week one</span>
+        <h3>Lock in a few sessions.</h3>
+        <p style="margin-bottom:16px;">Consistency early is everything. Book 2 to 3 classes this week, and say hi to a coach so we know your goals.</p>
+        <a class="btn btn-coral btn-block" href="#schedule">Book this week's sessions →</a>
+        <p class="step-mini">Try a couple of different class types to find your favorite, and tell your coach your goals.</p>
+      </div>
+    </div>
+
+    <div class="step-panel" data-step="3">
+      <div class="callout" style="margin-top:14px;">
+        <span class="step-tag">Weeks two to four</span>
+        <h3>Find your weekly rhythm.</h3>
+        <p style="margin-bottom:16px;">Pick your regular days and see how our programming rolls through its phases, so every session has a purpose.</p>
+        <a class="btn btn-coral btn-block" href="#programming">See how we program →</a>
+        <p class="step-mini">Want more structure and eyes on your form? Ask us about SGPT (small group personal training).</p>
+      </div>
+    </div>
+
+    <div class="step-panel" data-step="4">
+      <div class="callout coral" style="margin-top:14px;">
+        <span class="step-tag">Loving it?</span>
+        <h3>Make AO official.</h3>
+        <p style="margin-bottom:16px;">Lock in your membership while your trial is fresh. Your first three autopays are 15% off with code NEWMEMBER.</p>
+        <a class="btn btn-navy btn-block" href="#join">See membership options →</a>
+        <p class="step-mini">Not sure which plan fits? Text the team and we'll help you pick, no pressure.</p>
       </div>
     </div>
   </div>
@@ -1184,6 +1249,17 @@
     });
   }
 
+  /* ---------- YOUR NEXT STEP (90-day spine) ---------- */
+  function setStep(n){
+    n = Math.max(1, Math.min(4, parseInt(n,10) || 1));
+    document.querySelectorAll('#nextstep .step-chip').forEach(function(c){
+      c.classList.toggle('active', c.getAttribute('data-step') === String(n));
+    });
+    document.querySelectorAll('#nextstep .step-panel').forEach(function(p){
+      p.classList.toggle('show', p.getAttribute('data-step') === String(n));
+    });
+  }
+
   /* ---------- NAME PERSONALIZATION (from the link) ---------- */
   var memberName = "";
   function applyName(v){
@@ -1272,6 +1348,10 @@
       if(nm){ applyName(decodeURIComponent(nm)); }
       var st = (q.get('stage') || q.get('mode') || '').toLowerCase();
       if(st==='member' || st==='members' || st==='m'){ setMode('member'); }
+      var stp = q.get('step');
+      var day = q.get('day');
+      if(stp){ setStep(parseInt(stp,10)); }
+      else if(day){ var d=parseInt(day,10)||1; setStep(d<=1?1:(d<=7?2:(d<=28?3:4))); }
     }catch(e){}
     try{ renumberNav(); }catch(e){}
   })();
