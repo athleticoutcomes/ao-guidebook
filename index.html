@@ -220,6 +220,13 @@
   .step-panel.show{display:block;}
   .step-tag{display:inline-block;font-family:'Zona Pro','Poppins',sans-serif;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;font-weight:800;opacity:.85;margin-bottom:6px;}
   .step-mini{font-size:.82rem;margin:12px 0 0;opacity:.92;}
+  /* Native on-page forms */
+  .ao-form{display:flex;flex-direction:column;gap:14px;}
+  .ao-form label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:.9rem;color:var(--ink);}
+  .ao-form input{border:2px solid rgba(14,55,69,.16);background:var(--paper);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:1rem;color:var(--ink);}
+  .ao-form input:focus{outline:none;border-color:var(--sky-deep);}
+  .ao-form .hp{position:absolute;left:-9999px;top:auto;height:0;overflow:hidden;}
+  .form-thanks{padding:8px 2px;}
   .callout h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;}
 
   /* ---------- LOGISTIC LIST ---------- */
@@ -1032,8 +1039,23 @@
 
     <div class="callout coral" style="margin-top:24px;">
       <h3>Refer a friend 👯</h3>
-      <p style="margin-bottom:16px;">Give a friend our <b>$1 two-week trial</b>. When they join, you <b>both get $100 AO credit</b>. Takes about a minute.</p>
-      <a class="btn btn-navy" href="https://cotton-satin-a87.notion.site/1c724e77f1c98074a115d12a6be69e94" target="_blank" rel="noopener">Refer a friend →</a>
+      <p style="margin-bottom:0;">Give a friend our <b>$1 two-week trial</b>. When they join, you <b>both get $100 AO credit</b>. Fill this out and we'll email them a code, takes about a minute.</p>
+    </div>
+
+    <div class="card" style="margin-top:12px;">
+      <form name="refer-a-friend" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="ao-form" onsubmit="return submitAOForm(this,'referThanks')">
+        <input type="hidden" name="form-name" value="refer-a-friend">
+        <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+        <label>Your name *<input type="text" name="your-name" required autocomplete="name"></label>
+        <label>Your email *<input type="email" name="your-email" required autocomplete="email"></label>
+        <label>Your friend's first &amp; last name *<input type="text" name="friend-name" required></label>
+        <label>Your friend's email *<input type="email" name="friend-email" required></label>
+        <button type="submit" class="btn btn-coral btn-block">Send my referral →</button>
+      </form>
+      <div id="referThanks" class="form-thanks" style="display:none;">
+        <h3 style="margin:0 0 6px;">You're the best. 🙌</h3>
+        <p style="margin:0;color:var(--ink-deep);">We got it. We'll email your friend their $1 trial code, and when they join, you both get $100 AO credit.</p>
+      </div>
     </div>
 
     <div class="callout" style="margin-top:16px;">
@@ -1239,6 +1261,17 @@
     document.querySelectorAll('#nextstep .step-panel').forEach(function(p){
       p.classList.toggle('show', p.getAttribute('data-step') === String(n));
     });
+  }
+
+  /* ---------- NATIVE FORMS (Netlify, submitted without leaving the page) ---------- */
+  function submitAOForm(form, thanksId){
+    try{
+      var body = new URLSearchParams(new FormData(form)).toString();
+      fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:body})
+        .then(reveal).catch(reveal);
+    }catch(e){ reveal(); }
+    function reveal(){ form.style.display='none'; var t=document.getElementById(thanksId); if(t) t.style.display='block'; }
+    return false;
   }
 
   /* ---------- NAME PERSONALIZATION (from the link) ---------- */
