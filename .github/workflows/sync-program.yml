@@ -1,0 +1,38 @@
+name: Sync AO program from Notion
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate program.js from Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: node scripts/sync-notion.mjs
+
+      - name: Commit and push if program.js changed
+        run: |
+          git config user.name "AO Program Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- program.js; then
+            echo "No changes to program.js."
+          else
+            git add program.js
+            git commit -m "Auto-sync program data from Notion"
+            git push
+          fi
