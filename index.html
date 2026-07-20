@@ -377,8 +377,7 @@
   <a class="trial-only" href="#schedule" onclick="closeNav()"><span class="n">05</span>Class schedule</a>
   <a class="trial-only" href="#app" onclick="closeNav()"><span class="n">06</span>How to use the app</a>
   <a class="trial-only" href="#firstweek" onclick="closeNav()"><span class="n">07</span>Your first week</a>
-  <a class="trial-only" href="#logistics" onclick="closeNav()"><span class="n">08</span>The important stuff</a>
-  <a class="trial-only" href="#faq" onclick="closeNav()"><span class="n">09</span>FAQ</a>
+  <a class="trial-only" href="#faq" onclick="closeNav()"><span class="n">08</span>The important stuff</a>
   <a class="trial-only" href="#location" onclick="closeNav()"><span class="n">10</span>Where to find us</a>
   <a class="trial-only" href="#love" onclick="closeNav()"><span class="n">11</span>Member love</a>
   <a class="trial-only" href="#join" onclick="closeNav()"><span class="n">12</span>Become a member</a>
@@ -671,39 +670,37 @@
       </div>
     </div>
 
-    <!-- HOW WE PROGRAM / 4-WEEK CYCLE -->
-    <div style="margin-top:36px;">
-      <span class="eyebrow">How we program</span>
-      <h3 style="font-size:1.6rem;font-weight:900;color:var(--ink);letter-spacing:-.5px;">The 4-week cycle.</h3>
-      <p style="color:var(--ink-deep);margin-top:8px;">Every 4 weeks, the whole gym rolls through four training phases together. It keeps your body adapting, your training balanced, and your progress steady.</p>
-      <div class="cycle" id="cycle">
-        <div class="cyc"><span class="wk">Week 1</span><b>Endurance</b></div>
-        <div class="cyc"><span class="wk">Week 2</span><b>Hypertrophy</b></div>
-        <div class="cyc"><span class="wk">Week 3</span><b>Power</b></div>
-        <div class="cyc"><span class="wk">Week 4</span><b>Max Strength</b></div>
-      </div>
-      <p class="cyc-now" id="cycNow">Rolling through our 4-week cycle together.</p>
-
-      <div class="grid two" style="margin-top:22px;">
-        <div class="card"><h4 style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">🔋 Endurance</h4><p style="font-size:.88rem;margin:0;color:var(--ink-deep);">Higher reps and steady work to build stamina and a strong engine.</p></div>
-        <div class="card"><h4 style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">💪 Hypertrophy</h4><p style="font-size:.88rem;margin:0;color:var(--ink-deep);">Moderate loads and volume to build lean muscle.</p></div>
-        <div class="card"><h4 style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">⚡ Power</h4><p style="font-size:.88rem;margin:0;color:var(--ink-deep);">Explosive, athletic movement. Move fast and with intent.</p></div>
-        <div class="card"><h4 style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">🏋️ Max Strength</h4><p style="font-size:.88rem;margin:0;color:var(--ink-deep);">Heavier compound lifts at lower reps to build raw strength.</p></div>
-      </div>
-
-      <div class="callout" style="margin-top:20px;">
-        <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">This week, day by day 🗓️</h3>
-        <p style="margin-bottom:16px;">Each class follows the current phase. Tap yours to see this week's plan, day by day, right here:</p>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <a class="btn btn-navy btn-block" href="#" onclick="return openProgram('fit')">AO Fit this week →</a>
-          <a class="btn btn-navy btn-block" href="#" onclick="return openProgram('strength')">AO Strength this week →</a>
-          <a class="btn btn-navy btn-block" href="#" onclick="return openProgram('power')">AO Power this week →</a>
+    <!-- HOW WE PROGRAM / 4-WEEK CYCLE (tap to open) -->
+    <details class="acc" style="margin-top:28px;">
+      <summary><span>🗓️ How we program: our 4-week cycle</span><span class="ic">+</span></summary>
+      <div class="body">
+        <p style="color:var(--ink-deep);margin-top:6px;">Every 4 weeks, the whole gym rolls through four training phases together. It keeps your body adapting and your progress steady.</p>
+        <div class="cycle" id="cycle">
+          <div class="cyc"><span class="wk">Week 1</span><b>Endurance</b></div>
+          <div class="cyc"><span class="wk">Week 2</span><b>Hypertrophy</b></div>
+          <div class="cyc"><span class="wk">Week 3</span><b>Power</b></div>
+          <div class="cyc"><span class="wk">Week 4</span><b>Max Strength</b></div>
         </div>
-        <p style="font-size:.82rem;margin:14px 0 0;color:var(--ink-deep);">Want to track your weights and PRs? AO Strength &amp; AO Power programming is also built into your AO app. Prefer the full month? Open it in Notion: <a href="https://cotton-satin-a87.notion.site/24724e77f1c98048a7b4e9c0bc7e9647" target="_blank" rel="noopener">Fit</a> · <a href="https://cotton-satin-a87.notion.site/24724e77f1c980e5a279d34b024feece" target="_blank" rel="noopener">Strength</a> · <a href="https://cotton-satin-a87.notion.site/24724e77f1c980ecb15dcad8017eac4b" target="_blank" rel="noopener">Power</a></p>
+        <p class="cyc-now" id="cycNow">Rolling through our 4-week cycle together.</p>
+        <div class="grid two" style="margin-top:22px;">
+          <div class="card"><h4 style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">🔋 Endurance</h4><p style="font-size:.88rem;margin:0;color:var(--ink-deep);">Higher reps and steady work to build stamina and a strong engine.</p></div>
+          <div class="card"><h4 style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">💪 Hypertrophy</h4><p style="font-size:.88rem;margin:0;color:var(--ink-deep);">Moderate loads and volume to build lean muscle.</p></div>
+          <div class="card"><h4 style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">⚡ Power</h4><p style="font-size:.88rem;margin:0;color:var(--ink-deep);">Explosive, athletic movement. Move fast and with intent.</p></div>
+          <div class="card"><h4 style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">🏋️ Max Strength</h4><p style="font-size:.88rem;margin:0;color:var(--ink-deep);">Heavier compound lifts at lower reps to build raw strength.</p></div>
+        </div>
+        <div class="callout" style="margin-top:20px;">
+          <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">This week, day by day 🗓️</h3>
+          <p style="margin-bottom:16px;">Each class follows the current phase. Tap yours to see this week's plan, day by day:</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a class="btn btn-navy btn-block" href="#" onclick="return openProgram('fit')">AO Fit this week →</a>
+            <a class="btn btn-navy btn-block" href="#" onclick="return openProgram('strength')">AO Strength this week →</a>
+            <a class="btn btn-navy btn-block" href="#" onclick="return openProgram('power')">AO Power this week →</a>
+          </div>
+          <p style="font-size:.82rem;margin:14px 0 0;color:var(--ink-deep);">Prefer the full month? Open it in Notion: <a href="https://cotton-satin-a87.notion.site/24724e77f1c98048a7b4e9c0bc7e9647" target="_blank" rel="noopener">Fit</a> · <a href="https://cotton-satin-a87.notion.site/24724e77f1c980e5a279d34b024feece" target="_blank" rel="noopener">Strength</a> · <a href="https://cotton-satin-a87.notion.site/24724e77f1c980ecb15dcad8017eac4b" target="_blank" rel="noopener">Power</a></p>
+        </div>
+        <a class="btn btn-coral btn-block" style="margin-top:18px;" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">Book this week's sessions →</a>
       </div>
-
-      <a class="btn btn-coral btn-block" style="margin-top:18px;" href="https://ao.athleticoutcomes.com/a/booking/" target="_blank" rel="noopener">Book this week's sessions →</a>
-    </div>
+    </details>
 
     <div class="callout" style="margin-top:26px;background:var(--sky);">
       <h3>6-week specialty SGPT programs 🎯</h3>
@@ -798,30 +795,13 @@
 </section>
 
 <!-- ================= LOGISTICS ================= -->
-<section class="section trial-only" id="logistics">
+<!-- ================= GOOD TO KNOW (logistics + FAQ merged) ================= -->
+<section class="section alt trial-only" id="faq">
   <div class="wrap fadein">
     <div class="sec-head">
       <span class="eyebrow">Good to know</span>
       <h2>The important stuff.</h2>
-      <p>A few house rules that keep things running smoothly for everyone.</p>
-    </div>
-    <div class="facts">
-      <div class="fact"><span class="fi">⏰</span><div><b>Arrive 5 to 10 min early</b><span>Especially for your first visit, it gives us time to show you around and get you set.</span></div></div>
-      <div class="fact"><span class="fi">📵</span><div><b>Phone-free zone</b><span>AO is a screen-free space. Drop the distractions and enjoy the moment. You've earned it.</span></div></div>
-      <div class="fact"><span class="fi">🗓️</span><div><b>Class cancellations</b><span>Cancel a group class at least <b>90 minutes</b> in advance to avoid a $10 fee.</span></div></div>
-      <div class="fact"><span class="fi">💪</span><div><b>SGPT cancellations</b><span>Cancel an SGPT session at least <b>90 minutes</b> in advance. A late cancel or no-show is a <b>$20</b> fee.</span></div></div>
-      <div class="fact"><span class="fi">🚫</span><div><b>No-shows</b><span>Classes are a <b>$10</b> late-cancel or no-show fee. SGPT is <b>$20</b>. Just give us a heads up and you're all set.</span></div></div>
-      <div class="fact"><span class="fi">⏳</span><div><b>Waitlist</b><span>On a waitlist? If a spot opens, you'll get an email up to <b>90 minutes before</b> class.</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FAQ ================= -->
-<section class="section alt trial-only" id="faq">
-  <div class="wrap fadein">
-    <div class="sec-head">
-      <span class="eyebrow">Quick answers</span>
-      <h2>Good questions.</h2>
+      <p>House rules and quick answers, all in one place. Tap any question.</p>
     </div>
     <div style="margin-top:24px;">
       <details class="acc"><summary><span>What should I wear and bring?</span><span class="ic">+</span></summary><div class="body">Comfortable athletic clothes, training shoes, and a water bottle. Bring a towel if you like. Just show up ready to move, we've got the rest.</div></details>
@@ -830,6 +810,7 @@
       <details class="acc"><summary><span>Can I bring a friend?</span><span class="ic">+</span></summary><div class="body">Please do! Send them our 2-week trial for just $1, and when they join, you'll both get $100 AO credit. See the Refer a Friend section below.</div></details>
       <details class="acc"><summary><span>What's the phone policy?</span><span class="ic">+</span></summary><div class="body">AO is a screen-free space. Drop the distractions and enjoy the hour, you've earned it.</div></details>
       <details class="acc"><summary><span>What if I need to cancel?</span><span class="ic">+</span></summary><div class="body">Classes: cancel at least 90 minutes ahead ($10 late-cancel or no-show fee). SGPT: cancel at least 90 minutes ahead ($20 late-cancel or no-show fee).</div></details>
+      <details class="acc"><summary><span>What if a class is full?</span><span class="ic">+</span></summary><div class="body">Hop on the waitlist in the app. If a spot opens, you'll get an email up to 90 minutes before class.</div></details>
       <details class="acc"><summary><span>Where do I park, and are there amenities?</span><span class="ic">+</span></summary><div class="body">Parking and on-site amenities info is coming soon here. In the meantime, message us in the app's CHAT or text 512-222-7179 and we'll fill you in.</div></details>
     </div>
     <p style="margin-top:18px;font-size:.9rem;color:var(--ink-deep);">Still curious? Message us in the app's <b>CHAT</b> or text <a href="sms:+15122227179" style="color:var(--coral);font-weight:700;">512-222-7179</a>.</p>
