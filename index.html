@@ -244,6 +244,11 @@
   .ap-rec .recname{font-size:1.7rem;font-weight:900;color:var(--ink);letter-spacing:-.6px;margin:6px 0 10px;line-height:1.1;}
   .ap-rec .why{color:var(--ink-deep);font-size:1rem;line-height:1.6;}
   .ap-rec .why b{color:var(--ink);}
+  /* Trial companion (time-aware, remembered) */
+  .companion{background:var(--paper);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow-sm);margin-bottom:22px;border-left:5px solid var(--coral);}
+  .comp-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .comp-greet{font-family:'Zona Pro','Poppins',sans-serif;font-weight:800;font-size:1.12rem;color:var(--ink);letter-spacing:-.3px;}
+  .comp-day{font-size:.82rem;font-weight:800;color:var(--sky-deep);white-space:nowrap;letter-spacing:.5px;}
   .callout h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;}
 
   /* ---------- LOGISTIC LIST ---------- */
@@ -442,6 +447,13 @@
 <!-- ================= YOUR NEXT STEP (trial 90-day spine) ================= -->
 <section class="section trial-only" id="nextstep">
   <div class="wrap fadein">
+    <div class="companion" id="companion">
+      <div class="comp-row">
+        <span class="comp-greet" id="compGreet">Welcome to your trial.</span>
+        <span class="comp-day" id="compDay">Day 1 of 14</span>
+      </div>
+      <div class="apbar" style="margin:12px 0 0;"><span id="compFill"></span></div>
+    </div>
     <div class="sec-head">
       <span class="eyebrow">Your next step</span>
       <h2>Not sure what to do next? Start here.</h2>
@@ -1540,17 +1552,52 @@
   })();
 
   /* Usage: guidebook.html?name=Sarah&stage=member  (stage optional: trial | member) */
+  /* ---------- TRIAL COMPANION: time-aware + remembered (localStorage) ---------- */
+  var AO = (function(){
+    var KEY='ao_state_v1', s={};
+    try{ s = JSON.parse(localStorage.getItem(KEY)||'{}') || {}; }catch(e){ s={}; }
+    function persist(){ try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(e){} }
+    return { get:function(k){return s[k];}, set:function(k,v){s[k]=v;persist();}, all:function(){return s;} };
+  })();
+  function aoTodayISO(){ var t=new Date(); return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2); }
+  function aoDayToStep(d){ return d<=1?1:(d<=7?2:(d<=11?3:4)); }
+  function initCompanion(explicitDay, name){
+    var s=AO.all(), start;
+    if(explicitDay!=null && !isNaN(explicitDay) && explicitDay>=1){
+      var d0=new Date(); d0.setDate(d0.getDate()-(explicitDay-1));
+      start = d0.getFullYear()+'-'+('0'+(d0.getMonth()+1)).slice(-2)+'-'+('0'+d0.getDate()).slice(-2);
+      AO.set('start', start);
+    } else if(s.start){ start=s.start; }
+    else { start=aoTodayISO(); AO.set('start', start); }
+    var day = Math.floor((new Date(aoTodayISO()) - new Date(start))/86400000)+1;
+    if(day<1) day=1;
+    var wasSeen = !!s.seen;
+    var nm = name || s.name || '';
+    if(name) AO.set('name', name);
+    var greet=document.getElementById('compGreet'), dayEl=document.getElementById('compDay'), fill=document.getElementById('compFill');
+    if(greet){
+      if(wasSeen || (explicitDay!=null && explicitDay>1)) greet.textContent = nm ? ('Welcome back, '+nm+'.') : 'Welcome back.';
+      else greet.textContent = nm ? ('Welcome, '+nm+'.') : 'Welcome to your trial.';
+    }
+    if(dayEl) dayEl.textContent = day>14 ? 'Trial complete' : ('Day '+day+' of 14');
+    if(fill) fill.style.width = Math.min(100,(day/14*100))+'%';
+    AO.set('seen', true);
+    try{ setStep(aoDayToStep(day)); }catch(e){}
+    return day;
+  }
+
+  /* Usage: guidebook.html?name=Sarah&day=7  (day sets where they are; the guide then remembers) */
   (function initFromURL(){
     try{
       var q = new URLSearchParams(window.location.search);
       var nm = q.get('name') || q.get('first') || q.get('fname') || q.get('fn');
-      if(nm){ applyName(decodeURIComponent(nm)); }
+      if(nm){ nm=decodeURIComponent(nm); applyName(nm); }
       var st = (q.get('stage') || q.get('mode') || '').toLowerCase();
       if(st==='member' || st==='members' || st==='m'){ setMode('member'); }
       var stp = q.get('step');
-      var day = q.get('day');
+      var dayParam = q.get('day');
+      try{ initCompanion(dayParam!=null?parseInt(dayParam,10):null, nm||null); }catch(e){}
       if(stp){ setStep(parseInt(stp,10)); }
-      else if(day){ var d=parseInt(day,10)||1; setStep(d<=1?1:(d<=7?2:(d<=28?3:4))); }
     }catch(e){}
     try{ renumberNav(); }catch(e){}
   })();
