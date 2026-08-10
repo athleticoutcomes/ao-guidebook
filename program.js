@@ -13,40 +13,40 @@ window.AO_PROGRAM = {
     ],
     "phases": {
       "Endurance": [
-        "Speed*",
-        "Endurance",
+        "Bodyweight",
         "Balance & Agility",
+        "Strength*",
+        "Pull",
+        "Push",
         "Max Strength*",
-        "Isometrics",
-        "Core & Cardio",
-        "Tabata*"
+        "Core Cardio"
       ],
       "Hypertrophy": [
-        "Push",
-        "Pull",
-        "Conditioning*",
+        "Hypertrophy",
+        "Power*",
         "Upper",
         "Lower",
-        "Bodyweight*",
-        "Hypertrophy"
+        "Cardio Endurance*",
+        "Upper",
+        "Lower"
       ],
       "Power": [
-        "Explosives",
-        "Speed*",
+        "Core*",
+        "Speed",
+        "Power",
+        "Strength Endurance*",
         "Pull",
         "Push",
-        "Endurance*",
-        "Power",
-        "Agility"
+        "Bodyweight*"
       ],
       "Max Strength": [
-        "Cardio Endurance*",
-        "Compound Strength",
-        "Eccentrics",
-        "Tabata*",
-        "Upper",
         "Lower",
-        "Core*"
+        "Upper",
+        "Cardio*",
+        "Upper Push / Lower Pull",
+        "Upper Pull / Lower Push",
+        "Balance & Agility*",
+        "Max Strength"
       ]
     }
   },
@@ -62,36 +62,36 @@ window.AO_PROGRAM = {
     ],
     "phases": {
       "Endurance": [
-        "U Pull / L Push",
+        "U Push / L Pull",
         "Full",
+        "U Pull / L Push",
         "U Push / L Pull",
         "U Pull / L Push",
-        "Full",
-        "U Push / L Pull"
+        "Full"
       ],
       "Hypertrophy": [
-        "U Push / L Pull",
         "U Pull / L Push",
-        "FULL",
         "U Push / L Pull",
-        "U Pull /L Push",
-        "FULL"
+        "Full",
+        "U Pull / L Push",
+        "U Push /L Pull",
+        "U Pull / Push"
       ],
       "Power": [
+        "Full",
         "U Pull / L Push",
-        "U Push/ L Pull",
-        "U Pull / L Push",
-        "FULL",
         "U Push / L Pull",
-        "U Pull / L Push"
+        "Full",
+        "U Pull / L Push",
+        "U Push / L Pull"
       ],
       "Max Strength": [
-        "U Push\nL Pull",
-        "FULL",
-        "U Pull\nL Push",
-        "U Push\nL Pull",
-        "FULL",
-        "U Pull\nL Push"
+        "U Push / L Pull",
+        "Full",
+        "U Pull / L Push",
+        "U Push / L Pull",
+        "Full",
+        "U Pull / L Push"
       ]
     }
   },
@@ -100,22 +100,22 @@ window.AO_PROGRAM = {
     "week": true,
     "phases": {
       "Endurance": {
-        "strength": "EMOM 10-12 reps",
-        "cond": "4 minutes @ PE 55-60-65-70%"
+        "strength": "EMOM 12 -15 reps",
+        "cond": "50s on / 10s off @ PE 55-60-65-70%"
       },
       "Hypertrophy": {
-        "strength": "EMOM 8-10 reps",
-        "cond": "40s on / 20s off @PE (75-85%)"
+        "strength": "EMOM 10-12 reps",
+        "cond": "45s on / 15s off @PE (75-85%)"
       },
       "Power": {
-        "strength": "EMOM 6-8 reps",
-        "cond": "25s on / 35s off @PE (80-90%)"
+        "strength": "EMOM 8-10 reps",
+        "cond": "30s on / 30s off @PE (80-90%)"
       },
       "Max Strength": {
         "strength": "EMOM 4-6 reps",
-        "cond": "15s on / 45s off @PE (80-90%)"
+        "cond": "20s on / 40s off @PE (80-90%)"
       }
     }
   }
 };
-window.AO_PROGRAM_UPDATED = "2026-08-03";
+window.AO_PROGRAM_UPDATED = "2026-08-10";
