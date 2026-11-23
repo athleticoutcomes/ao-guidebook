@@ -118,4 +118,4 @@ window.AO_PROGRAM = {
     }
   }
 };
-window.AO_PROGRAM_UPDATED = "2026-11-16";
+window.AO_PROGRAM_UPDATED = "2026-11-23";
